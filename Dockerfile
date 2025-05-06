@@ -4,7 +4,7 @@ WORKDIR /src
 COPY TestRiddle/TestRiddle.csproj TestRiddle/
 
 # 必要なパッケージを復元
-RUN dotnet restore TestRiddle/TestRiddle.csproj
+RUN dotnet restore TestRiddle/TestRiddle.csproj --verbosity detailed
 
 COPY TestRiddle/ TestRiddle/
 WORKDIR /src/TestRiddle
