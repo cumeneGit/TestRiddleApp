@@ -2,15 +2,15 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS build
 WORKDIR /app
 
+COPY TestRiddle/TestRiddle.csproj TestRiddle/
+# デバッグ目的でファイル確認
+RUN ls -la /src
+# 必要なパッケージを復元
+RUN dotnet restore TestRiddle/TestRiddle.csproj
 
-
-# プロジェクトファイルをコピーして復元
-COPY *.csproj ./
-RUN dotnet restore
-
-# ソースコードをコピーしてビルド
-COPY . ./
-RUN dotnet publish -c Release -o out
+COPY TestRiddle/ TestRiddle/
+WORKDIR /src/TestRiddle
+RUN dotnet publish -c Release -o /app/out
 
 # 実行ステージ
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
