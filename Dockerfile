@@ -1,5 +1,5 @@
 ﻿# ビルドステージ
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS build
 WORKDIR /app
 
 COPY TestRiddle/TestRiddle.csproj TestRiddle/
