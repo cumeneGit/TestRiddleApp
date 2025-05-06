@@ -1,10 +1,8 @@
 ﻿# ビルドステージ
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS build
-WORKDIR /app
-
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS build
+WORKDIR /src
 COPY TestRiddle/TestRiddle.csproj TestRiddle/
-# デバッグ目的でファイル確認
-RUN ls -la /src
+
 # 必要なパッケージを復元
 RUN dotnet restore TestRiddle/TestRiddle.csproj
 
