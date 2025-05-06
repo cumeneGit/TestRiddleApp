@@ -1,19 +1,23 @@
 ﻿# ビルドステージ
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS build
-WORKDIR /src
-COPY TestRiddle/TestRiddle.csproj TestRiddle/
+WORKDIR /app  # アプリケーションの作業ディレクトリを /app に設定
+
+# csproj ファイルをコピー
+COPY TestRiddle/TestRiddle.csproj ./
 
 # 必要なパッケージを復元
-RUN dotnet restore TestRiddle/TestRiddle.csproj --verbosity detailed
+RUN dotnet restore TestRiddle.csproj --verbosity detailed
 
-COPY TestRiddle/ TestRiddle/
-WORKDIR /src/TestRiddle
+# ソースコードをコピー
+COPY TestRiddle/ ./
+
+# アプリケーションのビルド
 RUN dotnet publish -c Release -o /app/out
 
 # 実行ステージ
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /app/out ./
 
 # ポート指定
 EXPOSE 8080
