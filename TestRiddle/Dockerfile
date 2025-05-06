@@ -2,13 +2,14 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS build
 WORKDIR /app
 
-# プロジェクトファイルをコピーして復元
-COPY *.csproj ./
-RUN dotnet restore
+# .csproj ファイルだけを先にコピー（レイヤーキャッシュ最適化）
+COPY TestRiddle/TestRiddle.csproj TestRiddle/
+RUN dotnet restore TestRiddle/TestRiddle.csproj
 
-# ソースコードをコピーしてビルド
-COPY . ./
-RUN dotnet publish -c Release -o out
+# 残りのコードをコピー
+COPY TestRiddle/ TestRiddle/
+WORKDIR /src/TestRiddle
+RUN dotnet publish -c Release -o /app/out
 
 # 実行ステージ
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
