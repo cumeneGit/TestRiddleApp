@@ -1,5 +1,5 @@
 ﻿# ビルドステージ
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS build
 WORKDIR /src
 COPY TestRiddle/TestRiddle.csproj TestRiddle/
 
@@ -11,7 +11,7 @@ WORKDIR /src/TestRiddle
 RUN dotnet publish -c Release -o /app/out
 
 # 実行ステージ
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/out .
 
