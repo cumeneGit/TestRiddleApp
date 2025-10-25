@@ -1,0 +1,19 @@
+.tab-bar {
+  display: flex;
+  background-color: #282c34;
+}
+
+.tab-bar button {
+  flex: 1;
+  color: white;
+  background: none;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tab-bar button.active {
+  border-bottom: 4px solid #61dafb;
+  font-weight: bold;
+}

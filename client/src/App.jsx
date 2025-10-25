@@ -1,58 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
+import TabBar from './components/TabBar';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Riddle1 from './pages/Riddle1';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
-  const [count, setCount] = useState(0);
-  const [message, setMessage] = useState('');
 
-  // server の API を呼ぶ
-  useEffect(() => {
-    if (activeTab === 'home') {
-      fetch('https://testriddleapp-server.onrender.com/api/hello')
-        .then(res => res.json())
-        .then(data => setMessage(data.message))
-        .catch(err => console.error(err));
-    }
-  }, [activeTab]);
+  const handleRiddle1Correct = () => {
+    setActiveTab('about'); // 正解したら About へ
+  };
 
   return (
-    <div>
-      {/* 上部タブバー */}
-      <nav className="tab-bar">
-        <button
-          className={activeTab === 'home' ? 'active' : ''}
-          onClick={() => setActiveTab('home')}
-        >
-          Home
-        </button>
-        <button
-          className={activeTab === 'about' ? 'active' : ''}
-          onClick={() => setActiveTab('about')}
-        >
-          About
-        </button>
-        <button
-          className={activeTab === 'contact' ? 'active' : ''}
-          onClick={() => setActiveTab('contact')}
-        >
-          Contact
-        </button>
-      </nav>
+    <div className="app-container">
+      <TabBar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {/* タブごとのコンテンツ */}
       <div className="tab-content">
-        {activeTab === 'home' && (
-          <div className="card">
-            <h1>Vite + React</h1>
-            <button onClick={() => setCount(count + 1)}>
-              count is {count}
-            </button>
-            <p>Message from server: {message}</p>
-          </div>
-        )}
-        {activeTab === 'about' && <div>About Content</div>}
-        {activeTab === 'contact' && <div>Contact Content</div>}
+        {activeTab === 'home' && <Home />}
+        {activeTab === 'about' && <About />}
+        {activeTab === 'contact' && <Contact />}
+        {activeTab === 'riddle1' && <Riddle1 onCorrect={handleRiddle1Correct} />}
       </div>
     </div>
   );
