@@ -43,7 +43,7 @@ function App() {
 
   // server の API を呼ぶ
   useEffect(() => {
-    fetch('http://testriddleapp-server.onrender.com/api/hello')
+    fetch('https://testriddleapp-server.onrender.com/api/hello')
       .then(res => res.json())
       .then(data => setMessage(data.message))
       .catch(err => console.error(err));
