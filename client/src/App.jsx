@@ -4,7 +4,7 @@ import TabBar from './components/TabBar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Riddle1 from './pages/Riddle1';
+import Riddle1 from './pages/smallRiddles/Riddle1';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
