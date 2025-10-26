@@ -1,0 +1,42 @@
+.animated-board {
+  position: relative;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 2px solid #555;
+}
+
+.cell {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.player {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  background-color: skyblue;
+  border-radius: 50%;
+  border: 2px solid #333;
+  transition: transform 0.25s ease; /* ←ここが滑らかに動くポイント */
+  z-index: 2;
+}
+
+.goal {
+  position: absolute;
+  background-color: gold;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.control-pad {
+  margin-top: 15px;
+  text-align: center;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 18px;
+}

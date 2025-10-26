@@ -1,0 +1,47 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  grid-template-rows: repeat(5, 60px);
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.row {
+  display: contents;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 壁の表示 */
+.cell.wall-right {
+  border-right: 4px solid #333;
+}
+.cell.wall-bottom {
+  border-bottom: 4px solid #333;
+}
+
+.player {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.player1 {
+  background-color: skyblue;
+}
+
+.player2 {
+  background-color: lightcoral;
+}

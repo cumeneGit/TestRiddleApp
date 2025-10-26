@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import RiddleLayout from '../../components/RiddleLayout'
+import riddleImage from '../../assets/smallRiddles/riddle1.png'  
 
 export default function Riddle2() {
   const [result, setResult] = useState('')
@@ -19,7 +20,7 @@ export default function Riddle2() {
     <>
       <RiddleLayout
         title="Riddle 2: 光を持たないのに夜を照らすものは？"
-        image="/images/riddle1.png"
+        image={riddleImage}
         onSubmit={handleSubmit}
       />
       <p>{result}</p>

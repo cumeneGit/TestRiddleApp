@@ -1,0 +1,65 @@
+.riddle4-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(5, 60px);
+  gap: 5px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  gap: 5px;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+.cell.wall {
+  background-color: #444;
+}
+
+.player {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.player1 {
+  background-color: skyblue;
+}
+
+.player2 {
+  background-color: lightcoral;
+}
+
+.control-pad {
+  margin: 20px;
+  text-align: center;
+}
+
+.control-pad button {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.check-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+}
