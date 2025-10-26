@@ -1,35 +1,28 @@
-import { useState } from 'react';
-import styles from './Riddle1.module.css';
-import riddleImage from '../assets/riddle1.png'; // 謎の画像
+import { useState } from 'react'
+import RiddleLayout from '../../components/RiddleLayout'
 
-export default function Riddle1({ onCorrect }) {
-  const [answer, setAnswer] = useState('');
-  const [feedback, setFeedback] = useState('');
+export default function Riddle10() {
+  const [result, setResult] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (answer.trim().toLowerCase() === '答え') {
-      setFeedback('正解！🎉');
-      onCorrect();
+    e.preventDefault()
+    const answer = e.target.answer.value.trim().toLowerCase()
+
+    if (answer === 'moonlight') {
+      setResult('正解！🌕')
     } else {
-      setFeedback('不正解…もう一度試してみてください。');
+      setResult('不正解…もう一度！')
     }
-  };
+  }
 
   return (
-    <div className={styles.card}>
-      <h2>Riddle 1</h2>
-      <img src={riddleImage} alt="Riddle" className={styles.image} />
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-          placeholder="答えを入力"
-        />
-        <button type="submit">回答</button>
-      </form>
-      <p className={styles.feedback}>{feedback}</p>
-    </div>
-  );
+    <>
+      <RiddleLayout
+        title="Riddle 10: 光を持たないのに夜を照らすものは？"
+        image="/images/riddle1.png"
+        onSubmit={handleSubmit}
+      />
+      <p>{result}</p>
+    </>
+  )
 }

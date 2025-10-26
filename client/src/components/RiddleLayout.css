@@ -1,0 +1,81 @@
+.riddle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 2rem;
+  background-color: #fafafa;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.riddle-container h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.riddle-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.riddle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.riddle-form input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.riddle-form input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.riddle-form button {
+  padding: 0.8rem;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.riddle-form button:hover {
+  background-color: #357ABD;
+}
+
+.riddle-container p {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 480px) {
+  .riddle-container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .riddle-form input, .riddle-form button {
+    font-size: 0.9rem;
+  }
+}

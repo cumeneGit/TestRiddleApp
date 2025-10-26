@@ -1,0 +1,10 @@
+export { default as Riddle1 } from './Riddle1';
+export { default as Riddle2 } from './Riddle2';
+export { default as Riddle3 } from './Riddle3';
+export { default as Riddle4 } from './Riddle4';
+export { default as Riddle5 } from './Riddle5';
+export { default as Riddle6 } from './Riddle6';
+export { default as Riddle7 } from './Riddle7';
+export { default as Riddle8 } from './Riddle8';
+export { default as Riddle9 } from './Riddle9';
+export { default as Riddle10 } from './Riddle10';

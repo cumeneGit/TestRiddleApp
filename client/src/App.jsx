@@ -1,16 +1,39 @@
 import { useState } from 'react';
 import './App.css';
 import TabBar from './components/TabBar';
+
+// ページ読み込み
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Riddle1 from './pages/smallRiddles/Riddle1';
+import * as Riddles from './pages/smallRiddles/_index'; // ← 一括インポート
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
 
-  const handleRiddle1Correct = () => {
-    setActiveTab('about'); // 正解したら About へ
+  // 謎が正解した時に呼ばれる関数（共通）
+  const handleRiddleSolved = (nextTab) => {
+    setActiveTab(nextTab);
+  };
+
+  // 表示切替
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'home':
+        return <Home />;
+      case 'about':
+        return <About />;
+      case 'contact':
+        return <Contact />;
+      case 'riddle1':
+        return <Riddles.Riddle1 onCorrect={() => handleRiddleSolved('riddle2')} />;
+      case 'riddle2':
+        return <Riddles.Riddle2 onCorrect={() => handleRiddleSolved('riddle3')} />;
+      case 'riddle3':
+        return <Riddles.Riddle3 onCorrect={() => handleRiddleSolved('about')} />;
+      default:
+        return <Home />;
+    }
   };
 
   return (
@@ -18,10 +41,7 @@ function App() {
       <TabBar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className="tab-content">
-        {activeTab === 'home' && <Home />}
-        {activeTab === 'about' && <About />}
-        {activeTab === 'contact' && <Contact />}
-        {activeTab === 'riddle1' && <Riddle1 onCorrect={handleRiddle1Correct} />}
+        {renderContent()}
       </div>
     </div>
   );
